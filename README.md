@@ -1,4 +1,9 @@
-         NetHack 3.7.0 work-in-progress -- General information
+NetHack
+=======
+
+## NetHack 3.7.0 work-in-progress
+
+### General information
 
 NetHack 3.7 is an enhancement to the dungeon exploration game NetHack,
 which is a distant descendent of Rogue and Hack, and a direct descendent of
