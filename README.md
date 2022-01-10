@@ -37,7 +37,7 @@ process. Among them:
  *  Remove barriers to building NetHack on one platform and operating system,
     for later execution on another (possibly quite different) platform and/or
     operating system. That capability is generally known as "cross-compiling."
-    See the file "[Cross-compiling](Cross-compiling)" in the top-level folder for more information
+    See the file "[Cross-compiling.md](Cross-compiling.md)" in the top-level folder for more information
     on that.
 
  *  Replace the build-time "yacc and lex"-based level compiler, the "yacc and
