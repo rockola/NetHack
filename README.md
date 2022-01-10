@@ -12,7 +12,7 @@ NetHack 3.6.
 NetHack 3.7.0 work-in-progress is not a release of NetHack. As a .0 version,
 and still very early in its development cycle, there has already been changes
 made, and there will continue to be many more prior to an eventual release.
-The file doc/fixes37.0 in the source distribution will be updated with a list
+The file [`doc/fixes37.0`](doc/fixes37.0) in the source distribution will be updated with a list
 of fixes as they are committed.
 
 In short -- there are likely to be bugs. Don't treat NetHack-3.7 branch as
@@ -23,7 +23,7 @@ We're making the .0 work-in-progress available so that you can observe, test
 out, and contribute to its development. Constructive suggestions, GitHub pull
 requests, and bug reports are all welcome and encouraged.
 
-The file doc/fixes37.0 in the source distribution has a full list of bug-fixes
+The file [`doc/fixes37.0`](doc/fixes37.0) in the source distribution has a full list of bug-fixes
 included so far, as well as brief mentions of some of the other code changes.
 The text in there was written for the development team's own use and is
 provided  "as is", so please do not ask us to further explain the entries in
@@ -51,7 +51,7 @@ process. Among them:
 
  *  Add support to make the game restartable without exit (a.k.a. "play again"
     support). Toward that end, many previously scattered and separate variables
-    have been gathered into a central 'g' structure in decl.h/decl.c. That
+    have been gathered into a central 'g' structure in `decl.h/decl.c`. That
     will benefit the porting effort to some platforms that are under
     consideration.
 
@@ -89,7 +89,7 @@ Please read items (1), (2) and (3) BEFORE doing anything with your new code.
     all the directory references in them.
 
 3.  Before you do anything else, please read carefully the file called
-    "license" in the 'dat' subdirectory.  It is expected that you comply
+    "[`license`](dat/license)" in the '`dat`' subdirectory.  It is expected that you comply
     with the terms of that license, and we are very serious about it.
 
 4.  If you are attempting to build NetHack on one platform/processor, to
@@ -101,15 +101,15 @@ Please read items (1), (2) and (3) BEFORE doing anything with your new code.
     that the default configuration is SysV/Sun/Solaris2.x (simply because
     the code was housed on such a system).
 
-    The files sys/*/Install.* were written to guide you in configuring the
-    program for your operating system.  The files win/*/Install.* are
+    The files `sys/*/Install.*` were written to guide you in configuring the
+    program for your operating system.  The files `win/*/Install.*` are
     available, where necessary, to help you in configuring the program
     for particular windowing environments.  Reading them, and the man pages,
     should answer most of your questions.
 
 
-    At the time of the most recent official release, NetHack 3.6, it had
-    been tested to run/compile on:
+At the time of the most recent official release, NetHack 3.6, it had
+been tested to run/compile on:
 
         Intel Pentium or better (or clone) running Linux, BSDI, or
                 Windows (7 through 10)
@@ -117,13 +117,13 @@ Please read items (1), (2) and (3) BEFORE doing anything with your new code.
         Mac OS X 10.11 (follow the instructions in sys/unix, not sys/mac)
         OpenVMS (aka VMS) V8.4 on Alpha and on Integrity/Itanium/IA64
 
-    Instructions have been provided by way of community contribution on:
+Instructions have been provided by way of community contribution on:
         msdos protected mode using djgpp including a Linux-host djgpp
         cross-compile
 
-    Previous versions of NetHack were tested and known to run on the
-    following systems, but it is unknown if they can still build and
-    execute NetHack 3.6 or NetHack 3.7:
+Previous versions of NetHack were tested and known to run on the
+following systems, but it is unknown if they can still build and
+execute NetHack 3.6 or NetHack 3.7:
 
         Apple Macintosh running MacOS 7.5 or higher, LinuxPPC, BeOS 4.0
         Atari ST/TT/Falcon running TOS (or MultiTOS) with GCC
@@ -164,47 +164,48 @@ Please read items (1), (2) and (3) BEFORE doing anything with your new code.
         Sun SPARC based machine running SunOS 4.x, Solaris 2.x, or Solaris 7
         Valid Logic Systems SCALD-System
 
-    Previous versions, using a cross-compiler hosted on another platform,
-    such as  win32, could also build the following from source:
+Previous versions, using a cross-compiler hosted on another platform,
+such as  win32, could also build the following from source:
         Pocket PC devices running Windows CE 3.0 and higher
         H/PC Pro devices running Windows CE 2.11 and higher
         Palm Size PC 1.1 devices running Windows CE 2.11
 
-    Unless otherwise mentioned, the compiler used was the OS-vendor's
-    C compiler.
+Unless otherwise mentioned, the compiler used was the OS-vendor's
+C compiler.
 
                         - - - - - - - - - - -
 
 If you have problems building the game, or you find bugs in it, we recommend
 filing a bug report from our "Contact Us" web page at:
     https://www.nethack.org/common/contact.html
-Please include the version information from #version or the command line
-option --version in the appropriate field.
+Please include the version information from `#version` or the command line
+option `--version` in the appropriate field.
 
 A public repository of the latest NetHack code that we've made
 available can be obtained via git here:
     https://github.com/NetHack/NetHack
-      or
+or
     https://sourceforge.net/p/nethack/NetHack/
 
 When sending correspondence, please observe the following:
-o Please be sure to include your machine type, OS, and patchlevel.
-o Please avoid sending us binary files (e.g. save files or bones files).
+* Please be sure to include your machine type, OS, and patchlevel.
+* Please avoid sending us binary files (e.g. save files or bones files).
   If you have found a bug and think that your save file would aid in solving
   the problem, send us a description in words of the problem, your machine
   type, your operating system, and the version of NetHack.  Tell us that you
   have a save file, but do not actually send it.
   You may then be contacted by a member of the development team with the
   address of a specific person to send the save file to.
-o Though we make an effort to reply to each bug report, it may take some
+* Though we make an effort to reply to each bug report, it may take some
   time before you receive feedback.  This is especially true during the
   period immediately after a new release, when we get the most bug reports.
-o We don't give hints for playing the game.
-o Don't bother to ask when the next version will be out or you can expect
+* We don't give hints for playing the game.
+* Don't bother to ask when the next version will be out or you can expect
   to receive a stock answer.
 
 If you want to submit a patch for the NetHack source code via email directly,
 you can direct it to this address:
+
     nethack-bugs (at) nethack.org
 
 If a feature is not accepted you are free, of course, to post the patches
@@ -216,8 +217,9 @@ be able to provide support or receive bug reports for it.
 
 In our own patches, we will assume that your code is synchronized with ours.
 
-                  -- Good luck, and happy Hacking --
-
+**Good luck, and happy Hacking**
+```
 # $NHDT-Date: 1583508658 2020/03/06 15:30:58 $ $NHDT-Branch: NetHack-3.6-Mar2020 $:$NHDT-Revision: 1.80 $
 # Copyright (c) 2012 by Michael Allison
 # NetHack may be freely redistributed.  See license for details.
+```
