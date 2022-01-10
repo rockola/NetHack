@@ -1,4 +1,6 @@
-Cross-compiling NetHack 3.7 Last edit: December 7, 2020
+Cross-compiling NetHack 3.7 
+===========================
+Last edit: December 7, 2020
 
 The NetHack 3.7 build process differs from the build process of previous
 versions in some important ways that make it possible to use a cross-compiler
@@ -6,27 +8,26 @@ running on one platform (the "host" platform of the build) to produce a binary
 NetHack package that can execute on an entirely different platform.
 
 Part A Contents:
-    A1. Why cross-compile?
-    A2. Building NetHack 3.6 (before)
-    A3. Building NetHack 3.7 (going forward)
-    A4. How was the build procedure reduced to 5 steps?
-    A5. How can I help with the cross-compiling initiative?
+
+    - A1. Why cross-compile?
+    - A2. Building NetHack 3.6 (before)
+    - A3. Building NetHack 3.7 (going forward)
+    - A4. How was the build procedure reduced to 5 steps?
+    - A5. How can I help with the cross-compiling initiative?
 
 Part B Contents:
-    B1. Two sets of compiles and procedures
-    B2. What needs to be built and executed on the HOST?
-    B3. What needs to be built for the TARGET?
-    B4. Case sample: msdos
-    B5. Case sample: amiga (started but incomplete)
-    B6. Case sample: Web Assembly, libnh
 
---------------------------------------------------------------------------------
- Part A - Cross-compiling NetHack
---------------------------------------------------------------------------------
+    - B1. Two sets of compiles and procedures
+    - B2. What needs to be built and executed on the HOST?
+    - B3. What needs to be built for the TARGET?
+    - B4. Case sample: msdos
+    - B5. Case sample: amiga (started but incomplete)
+    - B6. Case sample: Web Assembly, libnh
 
-  +--------------------------+
-  | A1. Why cross-compile?   |
-  +--------------------------+
+## Part A - Cross-compiling NetHack
+
+
+### A1. Why cross-compile?   
 
 By using cross-compilers on host platforms with fast processors, plenty of RAM
 and storage resources, and an available cross-compiler, it may be possible to
@@ -36,16 +37,16 @@ constrained to carry out the build process natively on the platform any more.
 Some of the constraints in carrying out a native build on the desired target
 may include, but not necessarily be limited to, any of the following:
 
-  o Access: Somebody with a working knowledge of the NetHack build process may
+  * Access: Somebody with a working knowledge of the NetHack build process may
     not have the desired target build platform available to them. Conversly,
     somebody with a keen knowledge of the target platform, and access to it,
     may not be all that familiar with the NetHack build process.
 
-  o Resources: Address space limitations, insufficient RAM, low amounts of disk
+  * Resources: Address space limitations, insufficient RAM, low amounts of disk
     storage, slow processor performance, may impede the ability to execute the
     compile process on the target platform.
 
-  o Compilers: Some of the native compilers on historical platforms may only
+  * Compilers: Some of the native compilers on historical platforms may only
     support the particular dialect of C that was popular when the platform and
     compiler were in their prime.
 
@@ -54,9 +55,7 @@ for carrying out test and production builds of NetHack for multiple target
 platforms through automated steps carried out on the host platform(s).
 
 
-  +-------------------------------------+
-  | A2. Building NetHack 3.6 (before)   |
-  +-------------------------------------+
+### A2. Building NetHack 3.6 (before)   
 
 Very generally, the build of NetHack in past versions required the following
 steps to be carried out:
@@ -115,9 +114,7 @@ platforms and operating systems. If all those things happen to match, the files
 might, just might, be usable across platforms, but the chances are against it,
 and that certainly cannot be counted on.
 
-  +------------------------------------------+
-  | A3. Building NetHack 3.7 (going forward) |
-  +------------------------------------------+
+### A3. Building NetHack 3.7 (going forward) 
 
 Again, very generally, the build of NetHack in 3.7 requires the following
 steps to be carried out:
@@ -146,38 +143,34 @@ by executing step 4 using a cross-compiler that runs on the build (host)
 platform to produce a resulting binary for the target platform, instead of
 executing the native compiler.
 
-  +-----------------------------------------------------+
-  | A4. How was the build procedure reduced to 5 steps? |
-  +-----------------------------------------------------+
+### A4. How was the build procedure reduced to 5 steps? 
 
 The following are among several design changes planned in NetHack 3.7,
 and these specific changes are what altered the build process to make
 cross-compiling possible:
 
-    o  There is no creation of platform-dependent files, such as the quest
+    *  There is no creation of platform-dependent files, such as the quest
        text files, by makedefs during the build process. Instead, the quest
        text files have been converted to Lua and are inserted into the game
        package for processing by the embedded Lua during execution of NetHack.
 
-    o  There is no build-time level compiler involved. Instead, the level
+    *  There is no build-time level compiler involved. Instead, the level
        descriptions have been converted to Lua and are inserted into the game
        package for processing by the embeded Lua during execution of NetHack.
 
-    o  There is no build-time dungeon compiler involved. Instead, the dungeon
+    *  There is no build-time dungeon compiler involved. Instead, the dungeon
        description has been converted to Lua and is inserted into the game
        package for processing by the embeded Lua during execution of NetHack.
 
-    o  Some of the build and option information that was formerly produced
+    *  Some of the build and option information that was formerly produced
        during build time by makedefs, and contained information about the
        build-platform specifically, is now produced at runtime within the
        game under a cross-compiled build. As such, it now produces information
        applicable to the target NetHack environment, not the build environment.
 
-  +------------------------------------------------------------+
-  | A5. How can I help with the cross-compiling initiative?    |
-  +------------------------------------------------------------+
+### A5. How can I help with the cross-compiling initiative?    
 
-    o  If you have a favourite target platform (let's call it XX-Platform for
+    *  If you have a favourite target platform (let's call it XX-Platform for
        example purposes) that you'd like to see NetHack be able to run on, do
        some research to find out if a cross-compiler exists that:
            - produces output for XX-Platform.
@@ -185,12 +178,12 @@ cross-compiling possible:
              Mac OS X are some examples of platforms that have cross-compilers
              for other targets available)
 
-    o  Then, make the community, devteam, and others aware that you're starting
+    *  Then, make the community, devteam, and others aware that you're starting
        a cross-compile of NetHack for XX-Platform. You might need to ask some
        "starting out" questions initially, and as you get deeper into it, you
        might need to ask some tougher questions.
 
-    o  Perhaps consider forking from NetHack on GitHub, and do the
+    *  Perhaps consider forking from NetHack on GitHub, and do the
        cross-compiler work there in your fork. Strive to get it to a point where
        it's ready to play-test on XX-Platform, or perhaps even use an emulator
        of XX-Platform if one is available. We live in a time where plenty do.
@@ -208,9 +201,8 @@ cross-compiling possible:
 
        Have fun!
 
------------------------------------------------------------------------------
- Part B - Cross-compiling details
------------------------------------------------------------------------------
+## Part B - Cross-compiling details
+
 
 Part B Contents:
     B1. Two sets of compiles and procedures
@@ -218,9 +210,7 @@ Part B Contents:
     B3. What needs to be built for the TARGET?
     B4. Case sample: msdos
 
-  +-----------------------------------------+
-  | B1. Two sets of compiles and procedures |
-  +-----------------------------------------+
+### B1. Two sets of compiles and procedures 
 
 The HOST is the platform/place that you're running the build procedures using
 the native compiler/linker, and the cross-compiler/linker that runs on the HOST
@@ -245,31 +235,33 @@ to generate binaries for the same platform as the host, where the HOST
 compilerand the TARGET compiler are actually one and the same.
 
 
-  +------------------------------------------------------+
-  | B2. What needs to be built and executed on the HOST? |
-  +------------------------------------------------------+
+### B2. What needs to be built and executed on the HOST? 
 
 On the HOST, here are the mandatory things that have to be built.
 
     a) Using the HOST native compiler, build  HOST native utility makedefs
 
        Compile and link the following with these compiler switches:
-         -DCROSSCOMPILE
+         `-DCROSSCOMPILE`
        from sources: util/makedefs.c, src/mdlib.c, src/monst.c, src/objects.c
 
     b) Execute HOST native makedefs utility, util/makedefs, as follows:
           Required for complete packaging of the game, but not the C source
           game compile:
+          ```
               util/makedefs -d
               util/makedefs -r
               util/makedefs -h
               util/makedefs -s
+          ```
 
           For reference purposes, but no longer a required prerequisite for the
           game compile process:
+          ```
               util/makedefs -v
               util/makedefs -o
               util/makedefs -p
+          ```
 
     c) Using the HOST native compiler, build these additional utilities if your
        target platform requires components that they produce. It is important
@@ -342,9 +334,7 @@ On the HOST, here are the mandatory things that have to be built.
                    purpose:      <TBD>
 
 
-  +--------------------------------------------+
-  | B3. What needs to be built for the TARGET? |
-  +--------------------------------------------+
+### B3. What needs to be built for the TARGET?
 
 
 For the TARGET side, here are the mandatory things that have to be built via
@@ -445,9 +435,8 @@ Using the cross-compiler, build the following targets:
                                  NetHack curses window port in win/curses is
                                  desired
 
-  +-------------------------+
-  | B4. Case sample: msdos  |
-  +-------------------------+
+  
+### B4. Case sample: msdos  
 
 Cross-compiler used:     Andrew Wu's djgpp cross-compiler
 Cross-compiler url:      https://github.com/andrewwutw/build-djgpp
@@ -512,9 +501,8 @@ Cross-compiler pre-built binary downloads:
     enclosed inside ifdef sections and won't interfere with the
     non-cross-compile build in that case.
 
-  +-------------------------+
-  | B5. Case sample: amiga  |
-  +-------------------------+
+  
+### B5. Case sample: amiga  
 
 Disclaimer: This is a minimal recipe, just to help someone else get
             started if they have a desire to get a full cross-compile of
@@ -614,9 +602,7 @@ Cross-compiler url:      https://github.com/bebbo/amiga-gcc
     If you make headway, or are successful getting a working copy of
     NetHack going on the amiga, drop us a note at devteam@nethack.org.
 
-  +--------------------------------+
-  | B6. Case sample: Web Assembly  |
-  +--------------------------------+
+### B6. Case sample: Web Assembly 
 
 Credit: The initial Web Assembly cross compile was found in a pull request:
             https://github.com/NetHack/NetHack/pull/385
@@ -631,23 +617,23 @@ Cross-compiler url: https://emscripten.org/docs/getting_started/downloads.html
 
     For Ubuntu, the build prerequisite packages for building the compiler can
     be easily obtained:
-
+```
         sudo apt-get install python3 cmake default-jre
-
+```
     For macOS, you will need to install Xcode, git, cmake, Python 3.5 or new
     (at time of this writing).
 
     After installing the prerequite packages above, obtain the cross-compiler
     via git and build it from the directory of your choice using steps similar
     to these:
-
+```
             git clone https://github.com/emscripten-core/emsdk.git
             cd emsdk
             git pull
             ./emsdk install latest
             ./emsdk activate latest
             source ./emsdk_env.sh
-
+```
     The steps above reflect what was outlined at this url at the time
     of writing:
 
@@ -656,23 +642,23 @@ Cross-compiler url: https://emscripten.org/docs/getting_started/downloads.html
     That is the definitive source and trumps anything documented here.
 
     On your linux host, prepare to cross-compile NetHack as follows:
-
+```
         cd sys/unix ; sh setup.sh hints/linux.370 ; cd ../..
         make fetch-lua
-
+```
     On your macOS host, prepare to cross-compile NetHack as follows:
-
+```
         cd sys/unix ; sh setup.sh hints/macOS.370 ; cd ../..
         make fetch-lua
-
+```
     Then, cross-compile to targets/wasm as follows:
-
+```
         make CROSS_TO_WASM=1
-
+```
     You can build src/libnh.a from pull request 385 as follows:
-
+```
         make WANT_LIBNH=1
-
+```
     Do not add any additional windowport interfaces to your build
     (such as WANT_WIN_TTY=1 WANT_WIN_CURSES=1 WANT_WIN_X11=1 or
     WANT_WIN_QT=1) as those aren't applicable to the Web Assembly
@@ -680,12 +666,9 @@ Cross-compiler url: https://emscripten.org/docs/getting_started/downloads.html
     from pull request 385.
 
     Result: As mentioned, the wasm cross-compile will end up in
-            targets/wasm and the nethacklib.a will end up in
-            src.
+            `targets/wasm` and the `nethacklib.a` will end up in
+            `src`.
 
     The cross-compiler hints additions are enclosed inside ifdef sections
     and shouldn't interfere with the non-cross-compile builds using
-    hints/linux.370 or hints/macOS.370.
-
----
-
+    `hints/linux.370` or `hints/macOS.370`.
